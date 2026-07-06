@@ -1,0 +1,24 @@
+# Modelos entrenados (son muy pesados para GitHub)
+models/
+*.pt
+*.onnx
+*.torchscript
+
+# Datasets (se manejan desde Roboflow)
+datasets/
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Resultados de entrenamiento (se guardan en Drive)
+runs/
+Resultados_Pruebas/

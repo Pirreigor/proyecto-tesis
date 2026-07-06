@@ -1,0 +1,19 @@
+# Configuración de entrenamiento YOLOv8 - Detección de Caries
+model: yolov8s.pt
+imgsz: 640
+epochs: 100
+batch: 16
+patience: 20       # early stopping
+conf: 0.25         # umbral de confianza en inferencia
+iou: 0.7           # IoU threshold para NMS
+
+# Roboflow
+workspace: danny-morales-morces
+project: class-4-caries-a94um
+version: 1         # actualizar cuando generes nueva versión en Roboflow
+
+# Clases
+classes:
+  0: incipiente-leve
+  1: dentina-moderada
+  2: pulpar-severa
