@@ -14,6 +14,6 @@ version: 1         # actualizar cuando generes nueva versión en Roboflow
 
 # Clases
 classes:
-  0: incipiente-leve
-  1: dentina-moderada
-  2: pulpar-severa
+  0: leve
+  1: moderada
+  2: severa

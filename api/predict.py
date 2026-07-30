@@ -5,9 +5,9 @@ from ultralytics import YOLO
 from pathlib import Path
 
 CLASS_COLORS = {
-    'incipiente-leve':  (34, 197, 94),    # verde
-    'dentina-moderada': (234, 179, 8),    # amarillo
-    'pulpar-severa':    (239, 68, 68),    # rojo
+    'leve':     (34, 197, 94),   # verde
+    'moderada': (234, 179, 8),   # amarillo
+    'severa':   (239, 68, 68),   # rojo
 }
 
 _model = None
