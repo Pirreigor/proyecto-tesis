@@ -5,9 +5,10 @@ from ultralytics import YOLO
 from pathlib import Path
 
 CLASS_COLORS = {
-    'leve':     (34, 197, 94),   # verde
-    'moderada': (234, 179, 8),   # amarillo
-    'severa':   (239, 68, 68),   # rojo
+    'caries leve':     (34, 197, 94),    # verde
+    'caries moderada': (234, 179, 8),    # amarillo
+    'caries severa':   (239, 68, 68),    # rojo
+    'sin caries':      (59, 130, 246),   # azul
 }
 
 _model = None

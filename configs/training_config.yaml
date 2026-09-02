@@ -8,12 +8,13 @@ conf: 0.25         # umbral de confianza en inferencia
 iou: 0.7           # IoU threshold para NMS
 
 # Roboflow
-workspace: danny-morales-morces
-project: class-4-caries-a94um
-version: 1         # actualizar cuando generes nueva versión en Roboflow
+workspace: dannys-workspace-p5vnc
+project: data_caries
+version: 3
 
 # Clases
 classes:
-  0: leve
-  1: moderada
-  2: severa
+  0: caries leve
+  1: caries moderada
+  2: caries severa
+  3: sin caries
