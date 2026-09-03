@@ -22,3 +22,12 @@ env/
 # Resultados de entrenamiento (se guardan en Drive)
 runs/
 Resultados_Pruebas/
+
+# Node.js
+backend/node_modules/
+backend/.env
+frontend/node_modules/
+frontend/dist/
+
+# Permitir modelo V3 para despliegue (≈22 MB)
+!models/best_caries_v3.pt
