@@ -248,23 +248,34 @@ export default function Citas() {
 
     useEffect(() => { cargar(); }, [estado]);
 
+    const fmtParaDB = (fechaHora) => {
+        const fh = new Date(fechaHora);
+        return `${fh.getFullYear()}-${String(fh.getMonth()+1).padStart(2,'0')}-${String(fh.getDate()).padStart(2,'0')} ${String(fh.getHours()).padStart(2,'0')}:${String(fh.getMinutes()).padStart(2,'0')}:00`;
+    };
+
     const cambiarEstado = async (cita, nuevoEstado) => {
-        const fh = new Date(cita.fecha_hora);
-        const fechaFmt = `${fh.getFullYear()}-${String(fh.getMonth()+1).padStart(2,'0')}-${String(fh.getDate()).padStart(2,'0')} ${String(fh.getHours()).padStart(2,'0')}:${String(fh.getMinutes()).padStart(2,'0')}:00`;
         await client.put(`/api/citas/${cita.id}`, {
-            fecha_hora: fechaFmt,
+            fecha_hora: fmtParaDB(cita.fecha_hora),
             motivo: cita.motivo || null,
             estado: nuevoEstado,
             notas: cita.notas || null,
         });
-        setDiaSeleccionado(null);
-        cargar();
+        // Actualizar estado local sin recargar todo
+        const actualizar = c => c.id === cita.id ? { ...c, estado: nuevoEstado } : c;
+        setCitas(prev => prev.map(actualizar));
+        setDiaSeleccionado(prev => prev ? { ...prev, citas: prev.citas.map(actualizar) } : null);
     };
 
     const eliminar = async (id) => {
         if (!confirm('¿Eliminar esta cita?')) return;
         await client.delete(`/api/citas/${id}`);
-        cargar();
+        // Quitar de estado local sin recargar
+        setCitas(prev => prev.filter(c => c.id !== id));
+        setDiaSeleccionado(prev => {
+            if (!prev) return null;
+            const restantes = prev.citas.filter(c => c.id !== id);
+            return restantes.length > 0 ? { ...prev, citas: restantes } : null;
+        });
     };
 
     const pendientes  = citas.filter(c => c.estado === 'pendiente').length;
