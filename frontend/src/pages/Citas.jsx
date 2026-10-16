@@ -249,7 +249,14 @@ export default function Citas() {
     useEffect(() => { cargar(); }, [estado]);
 
     const cambiarEstado = async (cita, nuevoEstado) => {
-        await client.put(`/api/citas/${cita.id}`, { ...cita, estado: nuevoEstado });
+        const fh = new Date(cita.fecha_hora);
+        const fechaFmt = `${fh.getFullYear()}-${String(fh.getMonth()+1).padStart(2,'0')}-${String(fh.getDate()).padStart(2,'0')} ${String(fh.getHours()).padStart(2,'0')}:${String(fh.getMinutes()).padStart(2,'0')}:00`;
+        await client.put(`/api/citas/${cita.id}`, {
+            fecha_hora: fechaFmt,
+            motivo: cita.motivo || null,
+            estado: nuevoEstado,
+            notas: cita.notas || null,
+        });
         setDiaSeleccionado(null);
         cargar();
     };
