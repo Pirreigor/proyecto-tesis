@@ -105,25 +105,25 @@ function CalendarioMes({ citas, onSelectDia }) {
     const hoyKey = toKey(hoy);
 
     return (
-        <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
+        <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,.06)' }}>
             {/* Cabecera mes */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.25rem', borderBottom: '1px solid var(--border)' }}>
-                <button onClick={prev} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', color: 'var(--text-muted)', padding: '0 .5rem' }}>‹</button>
-                <span style={{ fontWeight: 700, fontSize: '1rem' }}>{MESES[month]} {year}</span>
-                <button onClick={next} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', color: 'var(--text-muted)', padding: '0 .5rem' }}>›</button>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.25rem', borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+                <button onClick={prev} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', color: '#64748b', padding: '0 .5rem' }}>‹</button>
+                <span style={{ fontWeight: 700, fontSize: '1rem', color: '#1e293b' }}>{MESES[month]} {year}</span>
+                <button onClick={next} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', color: '#64748b', padding: '0 .5rem' }}>›</button>
             </div>
 
             {/* Días de la semana */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', borderBottom: '1px solid var(--border)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', borderBottom: '1px solid #e2e8f0', background: '#f1f5f9' }}>
                 {DIAS_SEMANA.map(d => (
-                    <div key={d} style={{ textAlign: 'center', padding: '.5rem 0', fontSize: '.75rem', fontWeight: 600, color: 'var(--text-muted)', background: 'var(--bg)' }}>{d}</div>
+                    <div key={d} style={{ textAlign: 'center', padding: '.5rem 0', fontSize: '.75rem', fontWeight: 700, color: '#64748b', letterSpacing: '.03em' }}>{d}</div>
                 ))}
             </div>
 
             {/* Celdas */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)' }}>
                 {celdas.map((dia, i) => {
-                    if (!dia) return <div key={`e${i}`} style={{ minHeight: 80, background: 'var(--bg)', borderRight: '1px solid var(--border)', borderBottom: '1px solid var(--border)', opacity: .3 }} />;
+                    if (!dia) return <div key={`e${i}`} style={{ minHeight: 88, background: '#f8fafc', borderRight: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }} />;
                     const key   = `${year}-${String(month + 1).padStart(2,'0')}-${String(dia).padStart(2,'0')}`;
                     const dCitas = citasPorDia[key] || [];
                     const esHoy = key === hoyKey;
@@ -132,22 +132,22 @@ function CalendarioMes({ citas, onSelectDia }) {
                             key={key}
                             onClick={() => dCitas.length > 0 && onSelectDia(key, dCitas)}
                             style={{
-                                minHeight: 80,
+                                minHeight: 88,
                                 padding: '.4rem .5rem',
-                                borderRight: '1px solid var(--border)',
-                                borderBottom: '1px solid var(--border)',
+                                borderRight: '1px solid #e2e8f0',
+                                borderBottom: '1px solid #e2e8f0',
                                 cursor: dCitas.length > 0 ? 'pointer' : 'default',
-                                background: esHoy ? 'rgba(37,99,235,.06)' : 'var(--card-bg)',
+                                background: esHoy ? '#eff6ff' : '#fff',
                                 transition: 'background .15s',
                             }}
-                            onMouseEnter={e => { if (dCitas.length) e.currentTarget.style.background = 'rgba(37,99,235,.08)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = esHoy ? 'rgba(37,99,235,.06)' : 'var(--card-bg)'; }}
+                            onMouseEnter={e => { if (dCitas.length) e.currentTarget.style.background = '#dbeafe'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = esHoy ? '#eff6ff' : '#fff'; }}
                         >
                             <span style={{
                                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                                 width: 26, height: 26, borderRadius: '50%', fontSize: '.82rem', fontWeight: esHoy ? 700 : 400,
-                                background: esHoy ? 'var(--primary)' : 'transparent',
-                                color: esHoy ? '#fff' : 'var(--text)',
+                                background: esHoy ? '#2563eb' : 'transparent',
+                                color: esHoy ? '#fff' : '#1e293b',
                             }}>{dia}</span>
 
                             {/* Eventos del día */}
@@ -183,15 +183,15 @@ function PanelDia({ diaKey, citas, onClose, onCambiarEstado, onEliminar, navigat
         <div style={{
             position: 'fixed', inset: 0, zIndex: 200,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'rgba(0,0,0,.4)',
+            background: 'rgba(15,23,42,.5)',
         }} onClick={e => e.target === e.currentTarget && onClose()}>
-            <div style={{ background: 'var(--card-bg)', borderRadius: 14, width: '100%', maxWidth: 480, maxHeight: '80vh', overflow: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,.3)' }}>
-                <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ background: '#fff', borderRadius: 14, width: '100%', maxWidth: 480, maxHeight: '80vh', overflow: 'auto', boxShadow: '0 24px 64px rgba(0,0,0,.25)' }}>
+                <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8fafc' }}>
                     <div>
-                        <div style={{ fontWeight: 700, fontSize: '1rem', textTransform: 'capitalize' }}>{titulo}</div>
-                        <div style={{ fontSize: '.82rem', color: 'var(--text-muted)' }}>{citas.length} cita{citas.length !== 1 ? 's' : ''}</div>
+                        <div style={{ fontWeight: 700, fontSize: '1rem', textTransform: 'capitalize', color: '#1e293b' }}>{titulo}</div>
+                        <div style={{ fontSize: '.82rem', color: '#64748b' }}>{citas.length} cita{citas.length !== 1 ? 's' : ''}</div>
                     </div>
-                    <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', color: 'var(--text-muted)' }}>✕</button>
+                    <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', color: '#64748b' }}>✕</button>
                 </div>
                 <div style={{ padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '.75rem' }}>
                     {citas.map(c => (
