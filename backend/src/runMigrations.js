@@ -73,7 +73,7 @@ const migrations = [
         FOREIGN KEY (cita_id)        REFERENCES citas(id)        ON DELETE SET NULL,
         FOREIGN KEY (usuario_id)     REFERENCES usuarios(id)     ON DELETE CASCADE
     )`,
-    `ALTER TABLE analisis ADD COLUMN IF NOT EXISTS paciente_id INT DEFAULT NULL`,
+    `ALTER TABLE analisis ADD COLUMN paciente_id INT DEFAULT NULL`,
 ];
 
 async function runMigrations() {
