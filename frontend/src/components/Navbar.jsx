@@ -17,6 +17,8 @@ export default function Navbar() {
             <div className="navbar-links">
                 <Link to="/"          className={`nav-link ${location.pathname === '/'          ? 'active' : ''}`}>Análisis</Link>
                 <Link to="/historial" className={`nav-link ${location.pathname === '/historial' ? 'active' : ''}`}>Historial</Link>
+                <Link to="/pacientes" className={`nav-link ${location.pathname.startsWith('/pacientes') ? 'active' : ''}`}>Pacientes</Link>
+                <Link to="/citas"     className={`nav-link ${location.pathname === '/citas'     ? 'active' : ''}`}>Citas</Link>
             </div>
             <div className="navbar-user">
                 <span className="user-name">{user?.nombre}</span>

@@ -345,3 +345,149 @@ body {
 @media (max-width: 640px) { .modal-body { grid-template-columns: 1fr; } }
 .modal-img  { width: 100%; border-radius: 8px; }
 .modal-meta { font-size: .85rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+/* ── Form helpers ── */
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .form-row-2, .form-row-3 { grid-template-columns: 1fr; } }
+.form-group select, .form-group textarea {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .65rem .9rem;
+    font-size: .95rem;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color .2s;
+}
+.form-group select:focus, .form-group textarea:focus { border-color: var(--primary); }
+.form-group input { width: 100%; }
+
+/* ── Search bar ── */
+.search-bar { margin-bottom: 1.25rem; }
+.search-input {
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .6rem 1rem;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .2s;
+}
+.search-input:focus { border-color: var(--primary); }
+
+/* ── Clinic cards (citas, tratamientos, etc.) ── */
+.clinic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow);
+}
+.form-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+.estado-badge {
+    display: inline-block;
+    border-radius: 999px;
+    padding: .15rem .65rem;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.btn-danger-sm {
+    background: none;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    border-radius: 6px;
+    padding: .25rem .55rem;
+    cursor: pointer;
+    font-size: .85rem;
+    transition: background .2s;
+}
+.btn-danger-sm:hover { background: #fee2e2; }
+
+/* ── Tabs (dentro de detalle de paciente) ── */
+.tabs-bar {
+    display: flex;
+    gap: .25rem;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+.tab-btn-page {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: .6rem 1rem;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: color .2s, border-color .2s;
+}
+.tab-btn-page:hover  { color: var(--text); }
+.tab-btn-page.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-count {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 0 .45rem;
+    font-size: .72rem;
+    font-weight: 700;
+}
+.tab-content {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+/* ── Detail grid (info paciente) ── */
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+}
+@media (max-width: 580px) { .detalle-grid { grid-template-columns: 1fr; } }
+
+/* ── Stats row ── */
+.stats-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    min-width: 90px;
+    box-shadow: var(--shadow);
+}
+.stat-num   { font-size: 1.6rem; font-weight: 800; color: var(--text); }
+.stat-label { font-size: .78rem; color: var(--text-muted); margin-top: .2rem; }
+
+/* ── Filter chips ── */
+.filter-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .3rem .9rem;
+    font-size: .85rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: background .2s, color .2s, border-color .2s;
+}
+.filter-chip:hover  { background: var(--bg); }
+.filter-chip.active { background: var(--primary-light); color: var(--primary); border-color: var(--primary); font-weight: 600; }
